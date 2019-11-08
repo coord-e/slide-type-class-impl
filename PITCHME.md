@@ -1,4 +1,6 @@
-# Implement and Understand Type Classes
+## Implement and Understand Type Classes
+
+---
 
 ## About me
 
@@ -7,6 +9,8 @@
 - @coord_e
 - Coding in Haskell for ~1y
 
+---
+
 ## Type Classes - Introduction (1/2)
 
 ```haskell
@@ -14,6 +18,8 @@ class Num a where
   add :: a -> a -> a
   mul :: a -> a -> a
 ```
+
+---
 
 ## Type Classes - Introduction (2/2)
 
