@@ -115,6 +115,7 @@ square (1 :: Int) :: Int
   * functions which contrain constrainted name appears in it
 - Resolve "Type Constraint" when
   * suitable instance is found
+  * otherwise, raise an error
 
 @ulend
 
