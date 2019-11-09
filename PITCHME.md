@@ -123,8 +123,8 @@ square (1 :: Int) :: Int
 square x = mul x x
 main = print $ square 1
 -- is translated to
-square' mul x = mul x x
-main = print $ square' mulInt 1
+square mul' x = mul' x x
+main = print $ square mulInt 1
 ```
 
 ---
@@ -138,6 +138,7 @@ main = print $ square' mulInt 1
 ### Translation
 
 - Perform typing and translation at once
+  * Type-directed translation
 - Use "Context" instead of type environment
   * close to type environment, but overloadings and instantiations are distinguished
 
@@ -165,6 +166,11 @@ main = print $ square' mulInt 1
 ### Questions
 
 - When can `PRED` be applied?
+
+```haskell
+square x = mul x x
+```
+
 - How to apply `TAUT` in inference algorithm?
 
 ```haskell
@@ -187,6 +193,8 @@ square x = mul x x
 
 ---
 
+insert a placeholder in place of overloaded name
+
 ```haskell
 square x = <1> x x
 ```
@@ -195,7 +203,9 @@ square x = <1> x x
 
 `<1> :: 'a -> 'a -> 'b`
 
-Can't resolve the pladeholder, so apply `PRED`
+Can't find a suitable instance, so apply `PRED`
+
+![predrel](predrel.png)
 
 ```haskell
 square mul' x = mul' x x
@@ -213,13 +223,17 @@ print (square 3.0)
 
 in context: `square :: Num a => a -> a`
 
-apply `REL`
+found a constraint in type, so apply `REL`
+
+![predrel](predrel.png)
 
 ```haskell
 print (square mul 3.0)
 ```
 
 ---
+
+insert a placeholder in place of overloaded name
 
 ```haskell
 print (square <1> 3.0)
@@ -229,7 +243,9 @@ print (square <1> 3.0)
 
 `<1> :: Float -> Float -> Float`
 
-instance: `mulFloat`
+found instance: `mulFloat`
+
+![taut](taut.png)
 
 ```haskell
 print (square mulFloat 3.0)
