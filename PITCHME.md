@@ -184,7 +184,7 @@ main = print $ square mulInt 1
 over mul :: ∀a. Num a in
 inst mul :: Num Int = mulInt in
 let square = λx. mul x x in
-square (mul 1)
+square (mul 1 2)
 ```
 
 ---
@@ -194,13 +194,13 @@ square (mul 1)
 - When can `PRED` be applied?
 
 ```haskell
-square x = mul x x
+let square = λx. mul x x
 ```
 
 - How to apply `TAUT` in inference algorithm?
 
 ```haskell
-main = print (mul 1 2)
+mul 1 2
 ```
 
 ---
@@ -213,8 +213,19 @@ main = print (mul 1 2)
 
 ---
 
+### Step-by-Step explanation
+
+```
+over mul :: ∀a. Num a in
+inst mul :: Num Float = mulFloat in
+let square = λx. mul x x in
+square 3.0
+```
+
+---
+
 ```haskell
-square x = mul x x
+let square = λx. mul x x
 ```
 
 ---
@@ -222,7 +233,7 @@ square x = mul x x
 insert a placeholder in place of the overloaded name
 
 ```haskell
-square x = <1> x x
+let square = λx. <1> x x
 ```
 
 ---
@@ -234,7 +245,7 @@ Can't find a suitable instance, so apply `PRED`
 ![predrel](predrel.png)
 
 ```haskell
-square mul' x = mul' x x
+let square = λmul'. λx. mul' x x
 ```
 
 resulting to: `square :: Num a => a -> a`
@@ -242,7 +253,7 @@ resulting to: `square :: Num a => a -> a`
 ---
 
 ```haskell
-print (square 3.0)
+square 3.0
 ```
 
 ---
@@ -254,7 +265,7 @@ found a constraint in type, so apply `REL`
 ![predrel](predrel.png)
 
 ```haskell
-print (square mul 3.0)
+square mul 3.0
 ```
 
 ---
@@ -262,7 +273,7 @@ print (square mul 3.0)
 insert a placeholder in place of the overloaded name
 
 ```haskell
-print (square <1> 3.0)
+square <1> 3.0
 ```
 
 ---
@@ -274,12 +285,28 @@ found instance: `mulFloat`
 ![taut](taut.png)
 
 ```haskell
-print (square mulFloat 3.0)
+square mulFloat 3.0
 ```
 
 ---
 
-### Q: OK, what if there are more than one
+```
+over mul :: ∀a. Num a in
+inst mul :: Num Float = mulFloat in
+let square = λx. mul x x in
+square 3.0
+```
+
+is translated to
+
+```
+let square = λmul'. λx. mul' x x in
+square mulFloat 3.0
+```
+
+---
+
+### Q: OK, what if there are more than one methods?
 
 A: Use tuples
 
