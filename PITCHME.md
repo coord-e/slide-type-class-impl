@@ -1,6 +1,8 @@
-## 作ってわかる 型クラス
+## 作る 型クラス
 
 https://gitpitch.com/coord-e/slide-type-class-impl
+
+@Haskell Day 2019
 
 ---
 
@@ -159,22 +161,9 @@ main = print $ square mulInt 1
 
 ---
 
-### Translation rules (1/3)
+### Language
 
 ![syntax](syntax.png)
-
----
-
-### Translation rules (2/3)
-
-![taut](taut.png)
-![overinst](overinst.png)
-
----
-
-### Translation rules (3/3)
-
-![predrel](predrel.png)
 
 ---
 
@@ -186,6 +175,19 @@ inst mul :: Num Int = mulInt in
 let square = λx. mul x x in
 square (mul 1 2)
 ```
+
+---
+
+### Translation rules (1/3)
+
+![taut](taut.png)
+![overinst](overinst.png)
+
+---
+
+### Translation rules (2/3)
+
+![predrel](predrel.png)
 
 ---
 
@@ -238,9 +240,11 @@ let square = λx. <1> x x
 
 ---
 
+After the inference of rhs, `<1>` is typed to...
+
 `<1> :: 'a -> 'a -> 'b`
 
-Can't find a suitable instance, so apply `PRED`
+Can't find a suitable instance, so apply `PRED`:
 
 ![predrel](predrel.png)
 
@@ -277,6 +281,8 @@ square <1> 3.0
 ```
 
 ---
+
+After the inference of rhs, `<1>` is typed to...
 
 `<1> :: Float -> Float -> Float`
 
