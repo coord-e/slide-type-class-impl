@@ -4,8 +4,6 @@
 
 ## About me
 
-![icon](icon.png)
-
 - @coord\_e
 - Coding in Haskell for ~1y
 
@@ -166,16 +164,20 @@ main = print $ square' mulInt 1
 
 ### Questions
 
-- When can PRED be applied?
-- How to apply TAUT in inference algorithm?
+- When can `PRED` be applied?
+- How to apply `TAUT` in inference algorithm?
+
+```haskell
+main = print (mul 1 2)
+```
 
 ---
 
 ### Solution
 
-- PRED is applied just before the expression is bound to a name
+- `PRED` is applied just before the expression is bound to a name
   * just before the generalization
-- Use "placeholder" to determine the appropriate instance
+- Use "placeholder" to determine an appropriate instance
 
 ---
 
@@ -191,15 +193,15 @@ square x = <1> x x
 
 ---
 
-<1> :: 'a -> 'a -> 'b
+`<1> :: 'a -> 'a -> 'b`
 
-Can't resolve the pladeholder, so apply PRED
+Can't resolve the pladeholder, so apply `PRED`
 
 ```haskell
 square mul' x = mul' x x
 ```
 
-square :: Num a => a -> a
+resulting to: `square :: Num a => a -> a`
 
 ---
 
@@ -209,9 +211,9 @@ print (square 3.0)
 
 ---
 
-square :: Num a => a -> a
+in context: `square :: Num a => a -> a`
 
-apply REL
+apply `REL`
 
 ```haskell
 print (square mul 3.0)
@@ -225,9 +227,9 @@ print (square <1> 3.0)
 
 ---
 
-<1> :: Float -> Float -> Float
+`<1> :: Float -> Float -> Float`
 
-instance: mulFloat
+instance: `mulFloat`
 
 ```haskell
 print (square mulFloat 3.0)
@@ -247,6 +249,7 @@ add = fst numD
 mul = snd numD
 neg = thd numD
 
+
 instance Num Int where
   numD = (addInt, mulInt, negInt) 
 
@@ -264,7 +267,7 @@ https://github.com/coord-e/ad-hoc-poly
 
 ---
 
-### Working
+### Working Example
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">アドホック多相の実装ですが非常にいい感じになってきました <a href="https://t.co/aACdmdvj2N">pic.twitter.com/aACdmdvj2N</a></p>&mdash; coord.e (@coord_e) <a href="https://twitter.com/coord_e/status/1190204100727562240?ref_src=twsrc%5Etfw">November 1, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -272,4 +275,4 @@ https://github.com/coord-e/ad-hoc-poly
 
 ### Thank you for listening
 
-- Wadler, Philip, and Stephen Blott. "How to make ad-hoc polymorphism less ad hoc." Proceedings of the 16th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. ACM, 1989.
+Reference: Wadler, Philip, and Stephen Blott. "How to make ad-hoc polymorphism less ad hoc." Proceedings of the 16th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. ACM, 1989.
