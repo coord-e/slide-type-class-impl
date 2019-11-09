@@ -27,8 +27,8 @@ class Num a where
 ### Type Classes - Introduction (2/2)
 
 ```haskell
-mulInt :: Int -> Int -> Bool
-mulFloat :: Int -> Int -> Bool
+mulInt :: Int -> Int -> Int
+mulFloat :: Float -> Float -> Float
 
 square :: Num a => a -> a
 square x = mul x x
