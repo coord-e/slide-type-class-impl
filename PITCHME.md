@@ -137,4 +137,12 @@ main = print $ square' mulInt 1
 
 ---
 
-### 
+### Translation
+
+- Perform typing and translation at once
+- Use "Context" instead of type environment
+  * close to type environment, but overloadings and instantiations are distinguished
+
+---
+
+### Translation rules (1/3)
