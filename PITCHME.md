@@ -1,4 +1,4 @@
-## 作る 型クラス
+## Haskellで作ってわかる型クラス
 
 https://gitpitch.com/coord-e/slide-type-class-impl
 
