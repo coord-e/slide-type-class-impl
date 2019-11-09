@@ -5,6 +5,7 @@
 ## About me
 
 - @coord\_e
+- Writing compilers as a hobby
 - Coding in Haskell for ~1y
 
 ---
@@ -163,6 +164,17 @@ main = print $ square mulInt 1
 
 ---
 
+### Example
+
+```ocaml
+over mul :: ∀a. Num a in
+inst mul :: Num Int = mulInt in
+let square = λx. mul x x in
+square (mul 1)
+```
+
+---
+
 ### Questions
 
 - When can `PRED` be applied?
@@ -193,7 +205,7 @@ square x = mul x x
 
 ---
 
-insert a placeholder in place of overloaded name
+insert a placeholder in place of the overloaded name
 
 ```haskell
 square x = <1> x x
@@ -233,7 +245,7 @@ print (square mul 3.0)
 
 ---
 
-insert a placeholder in place of overloaded name
+insert a placeholder in place of the overloaded name
 
 ```haskell
 print (square <1> 3.0)
