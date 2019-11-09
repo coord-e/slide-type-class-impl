@@ -202,7 +202,7 @@ square (mul 1 2)
 let square = λx. mul x x
 ```
 
-- How to apply `TAUT` in inference algorithm?
+- How to apply `TAUT` during the inference?
 
 ```haskell
 mul 1 2
