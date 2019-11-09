@@ -1,4 +1,6 @@
-## Implement and Understand Type Classes
+## 作ってわかる 型クラス
+
+https://gitpitch.com/coord-e/slide-type-class-impl
 
 ---
 
@@ -44,9 +46,13 @@ main = print (square 3.0)
 
 ### Essense of Type Classes
 
+@ul
+
 - Same name for different implementation
-- Dispatched depending on its type
+- Dispatch depending on its type
 - "ad-hoc polymorphism"
+
+@ulend
 
 ---
 
@@ -99,6 +105,8 @@ square (1 :: Int) :: Int
 
 ### To-do?
 
+@ul
+
 - Introduce type constractor with kind `* -> Constraint` in class declaration
 - Introduce "Type Constraint" for
   * overloaded name, and
@@ -106,13 +114,19 @@ square (1 :: Int) :: Int
 - Resolve "Type Constraint" when
   * suitable instance is found
 
+@ulend
+
 ---
 
 ### Questions
 
+@ul
+
 - How can we replace names with suitable implementation?
   * overloaded names, just obtain it from instance declaration
   * what if it is an ordinally function with type constraint?
+
+@ulend
   
 ---
 
