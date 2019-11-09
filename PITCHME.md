@@ -46,7 +46,7 @@ main = print (square 3.0)
 
 ---
 
-### Essense of Type Classes
+### Essence of Type Classes
 
 @ul
 
