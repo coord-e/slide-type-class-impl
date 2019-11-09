@@ -180,6 +180,8 @@ square (mul 1 2)
 
 ### Translation rules (1/3)
 
+`A⊢e::σ/e'`: under a context `A`, `e` is typed as `σ` and translated to `e'`
+
 ![taut](taut.png)
 ![overinst](overinst.png)
 
